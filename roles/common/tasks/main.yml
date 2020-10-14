@@ -1,0 +1,6 @@
+---
+# tasks file for common
+# Update Yum repos
+# Install epel Repos
+# Install NTP
+# Install Syslog

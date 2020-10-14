@@ -1,0 +1,8 @@
+[all:vars]
+become=yes
+become_user=admin
+ansible_user=admin
+ansible_password=password@1
+
+[adminnodes]
+namesrv1.example.com
