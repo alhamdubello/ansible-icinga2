@@ -1,3 +1,6 @@
 ---
 - name: Deploying Icinga2
-  hosts: localhost
+  hosts: adminnodes
+  roles:
+    - epel
+    - icinga2

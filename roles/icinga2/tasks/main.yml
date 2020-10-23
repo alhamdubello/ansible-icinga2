@@ -1,0 +1,38 @@
+---
+# tasks file for icinga2
+#
+- name: Clear yum cache
+  command: yum clean all
+  args:
+    warn: no
+- name: Installing Iciniga2 Repo for CentOS8
+  dnf:
+    name: https://packages.icinga.com/epel/icinga-rpm-release-8-latest.noarch.rpm
+    state: present
+    disable_gpg_check: yes
+- name: Installing Iciniga2 for CentOS8
+  dnf:
+    name: icinga2
+    state: present
+- name: Starting Icinga2 service.
+  systemd:
+    name: icinga2
+    enabled: yes
+    state: started
+- name: Installing PowerTools repository
+  dnf:
+    name: "dnf-command(config-manager)"
+    state: present
+- name: Enable config dnf config-manager
+  command: dnf config-manager --set-enabled PowerTools 
+- name: Installing Check Plugins (nagios-plugins-all).
+  dnf:
+    name: 
+      - perl
+      - perl-utf8-all.noarch
+      - nagios-plugins-all
+    state: present
+- name: Installing other packages for syntax Highlighting
+  dnf:
+    name: vim-icinga2
+    state: present

@@ -1,8 +1,8 @@
 [all:vars]
-become=yes
+ansible_become=yes
 become_user=admin
 ansible_user=admin
-ansible_password=password@1
-
+ansible_become_pass=password@1
+anisble_become_method=sudo
 [adminnodes]
-namesrv1.example.com
+localhost ansible_connection=local become_user=admin

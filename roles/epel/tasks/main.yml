@@ -1,0 +1,8 @@
+---
+# tasks file for epel
+- name: Enable EPEL Repository for CentOS 8
+  dnf:
+    name: epel-release
+    state: latest
+  become: True
+  when: ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution_major_version'] == '8'
